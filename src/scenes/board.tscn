@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://bjqek0i4vqw48"]
+[gd_scene load_steps=2 format=3 uid="uid://bjqek0i4vqw48"]
+
+[ext_resource type="PackedScene" uid="uid://dbo6t3gxoxhuw" path="res://scenes/tetronimo.tscn" id="1_bw3vb"]
 
 [node name="Board" type="Node2D"]
+
+[node name="Tetronimo" parent="." instance=ExtResource("1_bw3vb")]
+position = Vector2(89, 54)

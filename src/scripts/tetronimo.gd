@@ -15,6 +15,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("rotate"):
 		rotate_mask()
+	if Input.is_action_just_pressed("rotate_anticlockwise"):
+		rotate_mask_anticlockwise()
 	draw_tetronimo()
 
 func draw_tetronimo() -> void:
@@ -63,6 +65,20 @@ func rotate_mask() -> void:
 	for i in size:
 		for j in size:
 			new_shape[j][size - i - 1] = shape_mask[i][j]
+			
+	shape_mask = new_shape
+	
+func rotate_mask_anticlockwise() -> void:
+	var size = shape_mask.size()
+	var new_shape : Array[Array] = []
+	for r in size:
+		new_shape.append([])
+		for c in size:
+			new_shape[r].append(0)
+			
+	for i in size:
+		for j in size:
+			new_shape[size - j - 1][i] = shape_mask[i][j]
 			
 	shape_mask = new_shape
 			

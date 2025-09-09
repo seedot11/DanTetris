@@ -1,15 +1,13 @@
 extends Node2D
 
 @onready var shape := $Shape
-var block_size := 32
-
-var shape_mask : Array[Array] = [
-	[0, 1, 0],
-	[0, 1, 0],
-	[1, 1, 0]
-]
+const block_size := 32
+var shape_mask : Array[Array]
+@export var properties : TetronimoProperties
 
 func _ready() -> void:
+	shape.color = properties.color
+	shape_mask = properties.get_shape_mask()
 	draw_tetronimo()
 
 func _physics_process(delta: float) -> void:

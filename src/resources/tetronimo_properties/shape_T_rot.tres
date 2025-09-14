@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://da88y3y7hgsy"]
+
+[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_yneca"]
+
+[resource]
+script = ExtResource("1_yneca")
+shape_mask = "1
+1, 1
+1"
+color = Color(0.554757, 0, 0.113298, 1)
+metadata/_custom_type_script = "uid://cmjh4svbwe1fv"

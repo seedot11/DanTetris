@@ -1,8 +1,7 @@
 extends Node2D
 
 @onready var shape := $Shape
-const block_size := 32
-var shape_mask : Array[Array]
+var shape_mask : TetronimoMask
 @export var properties : TetronimoProperties
 
 func _ready() -> void:
@@ -10,34 +9,32 @@ func _ready() -> void:
 	shape_mask = properties.get_shape_mask()
 	draw_tetronimo()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("rotate"):
-		rotate_mask()
+		shape_mask.rotate_mask()
 	if Input.is_action_just_pressed("rotate_anticlockwise"):
-		rotate_mask_anticlockwise()
+		shape_mask.rotate_mask_anticlockwise()
 	draw_tetronimo()
 
 func draw_tetronimo() -> void:
 	shape.polygon = []
-	var width = shape_mask[0].size()
-	var length = shape_mask.size()
+	var dimensions = shape_mask.get_mask_dimensions()
 	
-	var starting_x : int = width * (block_size/2) * -1
-	var starting_y : int = length * (block_size/2) * -1
-	var starting_pos := Vector2(starting_x, starting_y)
+	var starting_x : int = dimensions.width * Sizes.BLOCK_SIZE/2.0 * -1
+	var starting_y : int = dimensions.length * Sizes.BLOCK_SIZE/2.0 * -1
 	
 	var rows : Array[PackedVector2Array] = [] 
-	for y in shape_mask.size():
+	for y in dimensions.length:
 		var row : PackedVector2Array = []
-		for x in shape_mask[y].size():
-			if shape_mask[y][x] == 0:
+		for x in shape_mask.get_row(y).size():
+			if !shape_mask.get_cell(y, x):
 				continue
 			
 			var square : PackedVector2Array = [
-				Vector2(starting_x + x * block_size, starting_y + y * block_size),
-				Vector2(starting_x + (x + 1) * block_size, starting_y + y * block_size),
-				Vector2(starting_x + (x + 1) * block_size, starting_y + (y + 1) * block_size),
-				Vector2(starting_x + x * block_size, starting_y + (y + 1) * block_size)
+				Vector2(starting_x + x * Sizes.BLOCK_SIZE, starting_y + y * Sizes.BLOCK_SIZE),
+				Vector2(starting_x + (x + 1) * Sizes.BLOCK_SIZE, starting_y + y * Sizes.BLOCK_SIZE),
+				Vector2(starting_x + (x + 1) * Sizes.BLOCK_SIZE, starting_y + (y + 1) * Sizes.BLOCK_SIZE),
+				Vector2(starting_x + x * Sizes.BLOCK_SIZE, starting_y + (y + 1) * Sizes.BLOCK_SIZE)
 			]
 			
 			if row.size() == 0:
@@ -51,34 +48,5 @@ func draw_tetronimo() -> void:
 			shape.polygon = row
 		else:
 			shape.polygon = Geometry2D.merge_polygons(shape.polygon, row)[0]
-
-func rotate_mask() -> void:
-	var size = shape_mask.size()
-	var new_shape : Array[Array] = []
-	for r in size:
-		new_shape.append([])
-		for c in size:
-			new_shape[r].append(0)
-			
-	for i in size:
-		for j in size:
-			new_shape[j][size - i - 1] = shape_mask[i][j]
-			
-	shape_mask = new_shape
-	
-func rotate_mask_anticlockwise() -> void:
-	var size = shape_mask.size()
-	var new_shape : Array[Array] = []
-	for r in size:
-		new_shape.append([])
-		for c in size:
-			new_shape[r].append(0)
-			
-	for i in size:
-		for j in size:
-			new_shape[size - j - 1][i] = shape_mask[i][j]
-			
-	shape_mask = new_shape
-			
 	
 	

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://dybchd5wyj38f"]
+[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://boage0jwairgx"]
 
-[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/tetronimo_properties.gd" id="1_fkq78"]
+[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_fkq78"]
 
 [resource]
 resource_local_to_scene = true

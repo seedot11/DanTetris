@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://bric3alcd3l0n"]
+
+[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_1yexp"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_1yexp")
+shape_mask = "1
+1
+1
+1"
+color = Color(0.510128, 0.350842, 0.660047, 1)
+metadata/_custom_type_script = "uid://cmjh4svbwe1fv"

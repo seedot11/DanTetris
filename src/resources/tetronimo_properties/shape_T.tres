@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://cidnjpj6xe1tq"]
+[gd_resource type="Resource" script_class="TetronimoProperties" load_steps=2 format=3 uid="uid://b80lg50ump6ua"]
 
-[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/tetronimo_properties.gd" id="1_dxext"]
+[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_dxext"]
 
 [resource]
 script = ExtResource("1_dxext")

@@ -4,7 +4,7 @@ var shape_mask : Array[PackedInt32Array]
 
 func _init(_shape_mask: Array[PackedInt32Array] = []):
 	shape_mask = _shape_mask
-	
+
 func get_row(index: int) -> PackedInt32Array:
 	return shape_mask[index]
 	
@@ -28,18 +28,20 @@ func rotate_mask() -> void:
 	shape_mask = trim_trailing_0s(new_shape)
 	
 func rotate_mask_anticlockwise() -> void:
-	var size = shape_mask.size()
+	var dimensions = get_mask_dimensions()
+	shape_mask = pad_mask(shape_mask)
+	var size = maxi(dimensions.length, dimensions.width)
 	var new_shape : Array[PackedInt32Array] = []
 	for r in size:
-		new_shape.append([])
+		new_shape.append(PackedInt32Array())
 		for c in size:
 			new_shape[r].append(0)
 			
-	for i in size:
-		for j in size:
+	for i in dimensions.length:
+		for j in dimensions.width:
 			new_shape[size - j - 1][i] = shape_mask[i][j]
 			
-	shape_mask = new_shape
+	shape_mask = trim_trailing_0s(new_shape)
 			
 func get_mask_dimensions(when_rotated: bool = false) -> TetronimoDimensions:
 	var current_width := 0
@@ -69,7 +71,8 @@ func pad_mask(mask: Array[PackedInt32Array]) -> Array[PackedInt32Array]:
 			row.append(0)
 	
 	return mask	
-	
+
+## Trims trailing 0s
 func trim_trailing_0s(mask: Array[PackedInt32Array]) -> Array[PackedInt32Array]:
 	var new_mask : Array[PackedInt32Array] = []
 	var pos_of_first_1 = Int.INT_MAX

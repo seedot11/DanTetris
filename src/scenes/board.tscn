@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjqek0i4vqw48"]
+[gd_scene load_steps=4 format=3 uid="uid://bjqek0i4vqw48"]
 
 [ext_resource type="PackedScene" uid="uid://dbo6t3gxoxhuw" path="res://scenes/tetronimo.tscn" id="1_bw3vb"]
-[ext_resource type="Resource" uid="uid://boage0jwairgx" path="res://resources/tetronimo_properties/shape_L.tres" id="2_tx6nw"]
+[ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="2_tx6nw"]
+
+[sub_resource type="Resource" id="Resource_nglv8"]
+resource_local_to_scene = true
+script = ExtResource("2_tx6nw")
+shape_mask = "0, 1, 0
+0, 1, 0
+1, 1, 0"
+color = Color(0.797886, 0.465597, 0.380948, 1)
+metadata/_custom_type_script = "uid://cmjh4svbwe1fv"
 
 [node name="Board" type="Node2D"]
 
 [node name="Tetronimo" parent="." instance=ExtResource("1_bw3vb")]
 position = Vector2(89, 54)
-properties = ExtResource("2_tx6nw")
+properties = SubResource("Resource_nglv8")

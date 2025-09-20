@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_dxext"]
 
 [resource]
+resource_local_to_scene = true
+resource_name = "ShapeT"
 script = ExtResource("1_dxext")
-shape_mask = "0, 0, 0
-1, 1, 1
-0, 1, 0"
+shape_mask = "1, 1, 1
+0, 1"
 color = Color(0.0434629, 0.416491, 0.403198, 1)
 metadata/_custom_type_script = "uid://cmjh4svbwe1fv"

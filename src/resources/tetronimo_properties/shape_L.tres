@@ -4,6 +4,7 @@
 
 [resource]
 resource_local_to_scene = true
+resource_name = "ShapeL"
 script = ExtResource("1_fkq78")
 shape_mask = "0, 1, 0
 0, 1, 0

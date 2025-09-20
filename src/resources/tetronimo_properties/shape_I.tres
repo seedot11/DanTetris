@@ -4,6 +4,7 @@
 
 [resource]
 resource_local_to_scene = true
+resource_name = "ShapeI"
 script = ExtResource("1_1yexp")
 shape_mask = "1
 1

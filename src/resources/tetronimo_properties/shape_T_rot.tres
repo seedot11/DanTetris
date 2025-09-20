@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cmjh4svbwe1fv" path="res://scripts/resource_templates/tetronimo_properties.gd" id="1_yneca"]
 
 [resource]
+resource_local_to_scene = true
+resource_name = "StapeTRotated"
 script = ExtResource("1_yneca")
 shape_mask = "1
 1, 1
